@@ -4,7 +4,7 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 
 ---
 
-## Scene 1 — Landing Page (0:00 – 0:40)
+## Scene 1 — Landing Page (0:00 – 0:50)
 
 **Visual**: Browser at localhost:9700 — dark theme UI fully loaded.
 
@@ -12,39 +12,40 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 > "This is the Alfresco Community 26.x Control Plane. It's a web-based dashboard for managing Docker services without using the command line. Zero dependencies — just Python stdlib on the backend and vanilla JavaScript on the frontend."
 
 **Actions**:
-- Slow hover over the header showing "alfresco control plane"
+- Slow hover over the Hyland-branded header showing "Alfresco Control Plane"
+- Point to the **disclaimer banner** at top: "This demo utilizes a sample custom UI…"
 - Point to the status badge: "X/Y running" — green when all running, red otherwise
-- Point to Start All / Stop All / Restart All buttons — note they auto-disable: Start All disabled when all running, Stop All / Restart All disabled when none running
-- Point to the **?** button (restarts the guided tour on click)
-- Point to the **Open Alfresco ↗** link — appears whenever any service is running
+- Point to **Start All / Stop All / Restart All** buttons — note they auto-disable: Start All disabled when all running, Stop All / Restart All disabled when none running
 - Point to the **Refresh** button
+- Point to the **theme toggle** (checkbox with Dark/Light label) in the header
+- Point to the **?** button (restarts the guided tour on click)
+- Point to the **🔄 Update Versions** button (syncs image versions from upstream Alfresco templates)
+- Point to the **Open Alfresco ↗** link — appears whenever any service is running
+- Point to the **Kibana ↗** link — appears when Kibana service is running
 
 ---
 
-## Scene 2 — Services Panel (0:40 – 1:30)
+## Scene 2 — Services Panel (0:50 – 1:50)
 
 **Visual**: Services table showing alfresco, share, then alphabetical services.
 
 **Narration**:
-> "The Services panel lists every service from our docker-compose file. Alfresco and Share always appear first, followed by the rest alphabetically. Services with a `profiles: [donotstart]` config get a badge and are excluded from the default start. Each service shows a green or red status dot, and we have Start, Stop, and Restart controls per service or globally. When the Alfresco service is running, an 'Open Alfresco ↗' link appears in the header, and when Kibana is running, a 'Kibana ↗' link appears next to it for direct access to those services."
+> "The Services panel lists every service from our docker-compose file. Alfresco and Share always appear first, followed by the rest alphabetically. Services with a `profiles: [donotstart]` config get a badge and are excluded from the default start. Each service shows a green or red status dot, and we have Start, Stop, and Restart controls per service or globally."
 
 **Actions**:
 - Scroll slowly down the service list
 - Hover over a profile-tagged service — point out the "profile: donotstart" badge
-- Hover over a running service row — the row highlights
 - Click the **Stop** button on a non-critical service (e.g., `postgres`)
 - Wait for the toast: "postgres: stopped"
 - Point to the status changing to red, global Stop All button disabling
 - Click the **Start** button to bring it back up
 - Toast: "postgres: started"
-- Point to the **Open Alfresco ↗** link appearing in the header
-- Point to the **Kibana ↗** link appearing next to it when Kibana starts
-- Click the **Open Alfresco ↗** link to open Alfresco in a new tab
-- Click the **Kibana ↗** link to open Kibana in a new tab
+- Point to the **▶ Show Logs** toggle and the **Dozzle ↗** link on each service row
+- When services are starting, point out the **animated pulsing dot** and "starting…" indicator that persists until the container reports healthy
 
 ---
 
-## Scene 3 — Log Accordion & Dozzle (1:30 – 2:30)
+## Scene 3 — Log Accordion & Dozzle (1:50 – 2:40)
 
 **Visual**: Service row with ▶ Show Logs and Dozzle ↗ inline with service name.
 
@@ -54,7 +55,7 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 **Actions**:
 - Click **▶ Show Logs** on the `alfresco` row
 - Point to the toggle changing to **▼ Hide Logs**
-- Point to the log content appearing below in monospace, showing timestamps
+- Point to the log content appearing below in monospace, showing timestamps with red highlighting on ERROR/FATAL lines
 - Scroll the log content area
 - Click **▶ Show Logs** on `share` to open multiple logs simultaneously
 - Collapse both by clicking **▼ Hide Logs**
@@ -65,7 +66,25 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 
 ---
 
-## Scene 4 — Guided Tour (2:30 – 3:15)
+## Scene 4 — Global Properties Editor (2:40 – 3:10)
+
+**Visual**: The Alfresco service row with the "▶ Edit Global Properties" button.
+
+**Narration**:
+> "Alfresco has a built-in properties editor. You can modify `alfresco-global.properties` directly from the browser."
+
+**Actions**:
+- On the alfresco row, click **▶ Edit Global Properties**
+- Point to the textarea editor showing the current properties file
+- Make a small edit in the textarea
+- Click **Save** — show the green "✓ Saved" status
+- Narrate: "Changes take effect on restart — a prompt appears asking to restart the container"
+- Click **Discard & Reload** to show the discard flow
+- Click **▼ Properties** again then collapse it
+
+---
+
+## Scene 5 — Guided Tour (3:10 – 4:00)
 
 **Visual**: The guided tour overlay appears, dimming the background and highlighting elements.
 
@@ -79,19 +98,19 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 - Step 2 highlights the **Services Table** — per-service status and controls
 - Step 3 highlights **Logs & Monitoring** — Show Logs and Dozzle ↗
 - Step 4 highlights **File Management** — Upload, Install, Delete
-- Step 5 highlights the **AMPs** panel — installed modules and pending
-- Step 6 highlights the **JARs** panel — WEB-INF/lib listing with Remove
+- Step 5 highlights the **Installed Modules** — AMPs panel with installed + pending lists
+- Step 6 highlights the **Library JARs** — WEB-INF/lib listing with Remove
 - After step 6, the tour ends automatically
 - "The tour runs once per browser tracked via localStorage. Click **?** anytime to restart it."
 
 ---
 
-## Scene 5 — Uploading Files (3:15 – 4:15)
+## Scene 6 — Uploading & Installing Files (4:00 – 5:15)
 
 **Visual**: Available Files section, Content tab active.
 
 **Narration**:
-> "The Available Files section lets us manage files in the installs directories. We can upload AMPs and JARs directly through the browser."
+> "The Available Files section lets us manage AMPs and JARs. We can upload files directly through the browser, then install them into running containers."
 
 **Actions**:
 - Ensure the **Content** tab is active
@@ -106,20 +125,19 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 
 ---
 
-## Scene 6 — Installing & Deleting Files (4:15 – 5:00)
+## Scene 7 — Installing & Deleting Files (5:15 – 6:00)
 
 **Visual**: File list with Install AMP / Install JAR and Delete buttons.
 
 **Narration**:
-> "Each file has an Install button and a Delete button. Install buttons are disabled when Docker isn't running, with a message indicating they will be enabled once Docker starts. Let's install a JAR."
+> "Each file has Install and Delete buttons. Buttons show '(done)' when the file is already installed. They're disabled when Docker isn't running, with a message indicating they will be enabled once Docker starts."
 
 **Actions**:
 - Click **Install JAR** on a `.jar` file
-- Toast: "myfile.jar copied"
-- Point to the button showing "(done)" — disabled state indicating already installed
+- Toast: "myfile.jar: copied"
+- Point to the button showing "Install JAR (done)" — disabled state indicating already installed
 - Switch to the **JARs** tab in the right panel
 - "The JAR now appears in WEB-INF/lib — it will be live after the next restart."
-- Switch back to the Content tab
 - Click **Delete** on the same file
 - Confirmation dialog: "WARNING: Deleting files can be dangerous! Are you sure you want to delete..."
 - **Click OK**
@@ -128,96 +146,112 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 
 ---
 
-## Scene 7 — AMPs Panel (5:00 – 5:40)
+## Scene 8 — AMPs Panel (6:00 – 6:50)
 
 **Visual**: AMPs panel showing installed modules, available from installs/, and pending.
 
 **Narration**:
-> "The AMPs panel shows installed modules, available AMPs from the local installs directory, and what's pending in the container's amps dir ready to be installed."
+> "The AMPs panel shows installed modules via MMT, available AMPs from the local installs directory, and what's pending in the container's amps dir ready to be installed."
 
 **Actions**:
 - Point to the **Installed** table — Title, Version, ID columns, each with a **Remove** button
 - "Every installed AMP can be removed, even those baked into the image."
 - Click **Remove** on an installed AMP
-- Toast: "removed and available for reinstall"
+- Toast: "`module_id`: removed and available for reinstall"
 - "The AMP is uninstalled and reappears in Available, ready to be reinstalled with one click."
-- Point to the **Available (in installs/)** section below — lists AMPs in the local installs/ directory with **Install** buttons
-- "Available AMPs can be installed directly from the browser."
-- Point to the **Pending** section — lists AMP files in the container's amps dir (filtered to exclude already-installed AMPs)
-- Switch between **Alfresco**, **Share**, and **All Services** tabs
+- Point to the **Available (in installs/ directory)** section — lists AMPs with **Install AMP** buttons
+- Point to the **Pending (in amps dir)** section — lists AMP files in the container's amps dir (filtered to exclude already-installed AMPs)
+- Switch between **All Services**, **Alfresco**, and **Share** tabs
 - "The All Services tab aggregates both containers."
 
 ---
 
-## Scene 8 — JARs Panel (5:40 – 6:10)
+## Scene 9 — JARs Panel (6:50 – 7:20)
 
 **Visual**: JARs panel showing installed JARs, available from installs/, and all three tabs.
 
 **Narration**:
-> "The JARs panel gives us visibility into every JAR deployed in WEB-INF/lib and available in the local installs directory. We can install, remove, and track JARs across both containers."
+> "The JARs panel gives us visibility into every JAR deployed in WEB-INF/lib and available in the local installs directory. Only JARs installed through the UI are removable — they're tracked in a local JSON file."
 
 **Actions**:
-- Point to the **Installed** list with Remove buttons
-- Point to the **Available (in installs/)** section with Install buttons
-- Switch between **Alfresco**, **Share**, and **All Services** tabs
+- Point to the **Installed (WEB-INF/lib)** list with Remove buttons
+- Point to the **Available (in installs/ directory)** section with Install buttons
+- Switch between **All Services**, **Alfresco**, and **Share** tabs
 - "The All Services tab shows both containers with service badges, just like AMPs does."
-- Click **Remove** on a non-critical JAR
-- Toast: "myfile.jar removed"
-- "The JAR is deleted from the running container. Available JARs can be deployed with one click."
+- Click **Remove** on a tracked JAR
+- Toast: "myfile.jar: removed"
+- "The JAR is deleted from the running container. Changes take effect on restart."
 
 ---
 
-## Scene 9 — Refresh & Auto-Refresh (6:10 – 6:30)
+## Scene 10 — Batch Install (7:20 – 7:50)
 
-**Visual**: Services status and data staying current.
+**Visual**: Available Files section with the Install All button.
 
 **Narration**:
-> "All panels auto-refresh — services every 10 seconds. We can also force an update anytime with the Refresh button."
+> "The Install All button batch-installs all uninstalled JARs and AMPs in sequence, showing a live progress counter."
 
 **Actions**:
-- Click the **Refresh** button in the header
-- Watch all panels briefly reload
-- "Everything stays in sync with the live Docker state."
+- In the Content tab, point to the **Install All** button next to Upload File
+- Click it — show the button text updating as a progress counter: "0/3", "1/3", "2/3", "3/3"
+- Narrate: "Each file installs sequentially. Any errors are reported but don't stop the rest. A Restart Required prompt appears when done."
 
 ---
 
-## Scene 10 — Alfresco Ready Prompt (6:30 – 7:00)
+## Scene 11 — Wait Banner & Restart Prompt (7:50 – 8:40)
 
-**Visual**: Alfresco goes from stopped to running; a modal overlay appears.
+**Visual**: Alfresco starting up — wait banner with animated logo.
 
 **Narration**:
-> "When Alfresco starts up and its health probe returns healthy, a popup prompts you to open the application directly."
+> "While waiting for Alfresco to start or restart, an animated wait banner appears at the top with a spinning petal logo cycling through green, blue, orange, and yellow. When healthy, a prompt offers to open Alfresco."
 
 **Actions**:
-- Start the Alfresco service if stopped
-- Wait for the "Alfresco is ready" overlay to appear
-- Point to the **Open Alfresco** button and **Not now** dismiss button
-- "Click Open Alfresco to launch http://localhost:8080/alfresco in a new tab, or dismiss it."
-- Click **Not now** to close the prompt
-- "The prompt only appears once per session."
+- Narrate the restart flow from Scene 4 (after properties save)
+- Point to the **Restart Required** overlay: "The container needs to be restarted for the changes to take effect."
+- Click **Restart Now**
+- Show the animated wait banner with cycling petal colors
+- "The banner disappears once the health probe passes or the Alfresco ready prompt appears."
+- Point to the **Alfresco is ready** popup — "Open Alfresco" and "Not now" buttons
+- "Click Open Alfresco to launch http://localhost:8080/alfresco in a new tab."
 
 ---
 
-## Scene 11 — Docker Not Running (7:00 – 7:30)
+## Scene 12 — Quay.io Login & Image Pull (8:40 – 9:15)
 
-**Visual**: Docker overlay modal.
+**Visual**: Quay.io login overlay followed by the streaming pull output.
 
 **Narration**:
-> "If Docker isn't installed, the UI shows a 'Download Docker Desktop' link. If it's installed but not running, it shows a Launch Docker button. It polls every 500 milliseconds and loads the dashboard automatically once Docker is ready."
+> "When Start All is clicked and images need to be pulled from quay.io, a login overlay prompts for credentials. After login, a streaming pull output is shown."
 
-**Actions** (simulate by stopping Docker or just describe):
-- "The overlay adapts: Docker not installed → Download link; Docker not running → Launch Docker + Check Again buttons."
-- "Once launched, a waiting screen appears and polls until Docker responds."
+**Actions**:
+- Narrate: "If images are missing, the **Quay.io Login** overlay prompts for username and password/token."
+- Point out the error display area under the credentials fields
+- "After successful login, a **Pull** overlay opens showing streaming docker compose pull output with a 'Skip (start anyway)' button."
+- "The pull runs in a background thread, and the frontend polls for updates every 600ms."
+- "If all images are cached, the pull step is skipped and containers start immediately."
+
+---
+
+## Scene 13 — Docker Overlay & Start Prompt (9:15 – 9:50)
+
+**Visual**: Docker overlay modal and start prompt.
+
+**Narration**:
+> "If Docker isn't installed, the UI shows a 'Download Docker Desktop' link. If it's installed but not running, it shows a Launch Docker button with a polling wait screen. The UI also has an 'Ignore' button to bypass Docker checks entirely."
+
+**Actions**:
+- "The overlay also shows a **Start prompt**: 'Start all services?' when Docker is ready but no services are running."
+- "Once launched, a waiting screen appears and polls until Docker responds every 500ms."
 - "No terminal needed — everything is managed from the browser."
 
 ---
 
-## Scene 12 — Wrap Up (7:30 – 8:00)
+## Scene 14 — Wrap Up (9:50 – 10:20)
 
 **Visual**: Back to the full dashboard view.
 
 **Narration**:
-> "The Alfresco Control Plane puts everything in one place — service management, logs, files, AMPs, and JARs. No dependencies, no installation, no CLI needed. Just Python and a browser."
+> "The Alfresco Control Plane puts everything in one place — service management, logs, files, AMPs, JARs, properties editing, version sync, and theme toggle. No dependencies, no installation, no CLI needed. Just Python and a browser."
 
 **Actions**:
 - Slow zoom out / wide view of the full page
@@ -235,3 +269,4 @@ Record your screen at 1920×1080. Start with the control plane already open at h
 - **Preparation**: Have test `.jar` and `.amp` files ready in a folder before recording
 - **Outtakes**: Record each scene separately, then stitch together
 - **Tour**: Clear `localStorage` or use the **?** button to restart the guided tour on demand
+- **Light/Dark mode**: Toggle with the checkbox in the header to demonstrate theme switching

@@ -11,8 +11,8 @@ docker compose up -d donotstart # Start profile-gated services too
 
 ## Architecture
 
-- **Python backend** (`mgr/server.py`, ~1340 lines): stdlib `http.server`, all Docker via `subprocess.run`. No framework.
-- **JS frontend** (`mgr/static/index.html`): vanilla JS, zero deps, dark/light CSS variables. Renders via `innerHTML`.
+- **Python backend** (`mgr/server.py`, 1343 lines): stdlib `http.server`, all Docker via `subprocess.run`. No framework.
+- **JS frontend** (`mgr/static/index.html`, 2948 lines): vanilla JS, zero deps, dark/light CSS variables. Renders via `innerHTML`.
 - **Compose files**: `docker-compose.yaml` (18 services) + `commons/base.yaml` (traefik routing labels). `mgr/update_compose.py` handles upstream template fetching.
 - **MCP server**: container `wildsalfmcp` exposes SSE at `http://localhost:8000/sse`; configured in `.vscode/mcp.json`.
 
@@ -22,7 +22,7 @@ docker compose up -d donotstart # Start profile-gated services too
 |------|----------|
 | `CLAUDE.md` | Full API endpoint table, frontend state model, service listing |
 | `README.md` | UI walkthrough, feature docs, tech notes |
-| `DEMO_SCRIPT.md` | 12-scene video demo walkthrough |
+| `DEMO_SCRIPT.md` | 14-scene video demo walkthrough |
 | `MEMORY.md` | Development history and decisions |
 
 Read `CLAUDE.md` first for API details; it has the canonical endpoint list.
