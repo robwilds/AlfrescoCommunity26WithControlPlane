@@ -1,6 +1,8 @@
-# Alfresco Community 26.x
+# Alfresco Community 26.x with Control Plane
 
-This is a build of Alfresco Community 26.x with LDAP, a Python MCP server, LDAP server, and other goodies.
+** This is for demo purposes only **
+
+This is a build of Alfresco Community 26.x with LDAP, a Python MCP server, LDAP server, a Contrl Plane web application to manage the docker containers and jar/amp install and other goodies.
 
 https://connect.hyland.com/t5/alfresco-blog/alfresco-community-edition-26-1-release-notes/ba-p/497107
 
@@ -77,7 +79,7 @@ Rollback:
 
 - Every saved change is recorded in `mgr/data/compose_rollback.json` with a full content snapshot plus the per-service before/after versions (last 20 entries kept).
 - The Compose Config tab's **↩ Rollback** button opens a history list showing each change as `service: before → after`. Roll back a single service or all changes in an entry; a partially reverted entry keeps its remaining items for later.
-- Rollback always locates the service's `image:` line in the *current* file, so it stays correct even if you hand-edit the YAML in between.
+- Rollback always locates the service's `image:` line in the _current_ file, so it stays correct even if you hand-edit the YAML in between.
 
 ### AMPs Panel
 
